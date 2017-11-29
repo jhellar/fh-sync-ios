@@ -80,12 +80,6 @@ extension Request {
                             
                         }))
         
-        print("host: " + host!)
-        print("method:")
-        print(aerogearMethod)
-        print("path: " + path)
-        print(args)
-        
         http.request(method: aerogearMethod, path: path, parameters: args, completionHandler: {(response: Any?, error: NSError?) -> Void in
             let fhResponse = Response()
             if let resp = response as? [String: AnyObject] {

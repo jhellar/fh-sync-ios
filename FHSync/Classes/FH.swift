@@ -22,22 +22,6 @@ import Foundation
 import AeroGearHttp
 import Reachability
 
-func randomString(length: Int) -> String {
-    
-    let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    let len = UInt32(letters.length)
-    
-    var randomString = ""
-    
-    for _ in 0 ..< length {
-        let rand = arc4random_uniform(len)
-        var nextChar = letters.character(at: Int(rand))
-        randomString += NSString(characters: &nextChar, length: 1) as String
-    }
-    
-    return randomString
-}
-
 public typealias CompletionBlock = (Response, NSError?) -> Void
 /// HTTP standard methods.
 public enum HTTPMethod: String {
@@ -182,7 +166,7 @@ open class FH: NSObject {
         self.config = Config()
         let prop = [
             "hosts": [ "url": config ],
-            "init": [ "trackId": randomString(length: 20) ]
+            "init": [ "trackId": UUID().uuidString ]
         ]
         self.props = CloudProps(props: prop as [String : AnyObject])
         // register for reachability and retry init if it fails because of offline mode
@@ -196,27 +180,6 @@ open class FH: NSObject {
         
         // completion callback for success
         completionHandler(Response(), nil)
-        
-//        let initRequest = InitRequest(config: config)
-//        self.config = config
-//        initRequest.exec { (response: Response, error: NSError?) -> Void in
-//            if error == nil { // success
-//                self.props = initRequest.props
-//            } else {
-//                initError = error
-//            }
-//            // register for reachability and retry init if it fails because of offline mode
-//            do {
-//                try reachabilityRegistration()
-//            } catch let error as NSError {
-//                let response = Response()
-//                response.error = error
-//                completionHandler(response, error)
-//            }
-//
-//            // completion callback for success
-//            completionHandler(response, error)
-//        }
     }
 
     /**
@@ -238,108 +201,6 @@ open class FH: NSObject {
             }
         }
     }
-    /**
-     Register for remote notifications in AppDelegate's lifecycle method.
-
-     - parameter application: the application parameter available in AppDelegate class.
-
-     ```swift
-     class AppDelegate: UIResponder, UIApplicationDelegate {
-       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FH.pushEnabledForRemoteNotification(application: application)
-        return true
-       }
-     }
-     ```
-     */
-    open class func pushEnabledForRemoteNotification(application: UIApplication) {
-        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(settings)
-        UIApplication.shared.registerForRemoteNotifications()
-    }
-    /**
-     Register to AeroGear Unified Push Server. To be used in AppDelegate's lifecycle's method. `application(_, didRegisterForRemoteNotificationsWithDeviceToken:)`.
-
-     - parameter application: the application parameter available in AppDelegate class.
-
-     ```swift
-     class AppDelegate: UIResponder, UIApplicationDelegate {
-       func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-         FH.pushRegister(deviceToken: deviceToken, success: { res in
-           print("Unified Push registration successful")
-         }, error: {failed in
-           print("Unified Push registration Error \(failed.error)")
-         })
-       }
-     }
-     ```
-     */
-//    open class func pushRegister(deviceToken: Data?, config: PushConfig? = nil, success: @escaping (Response) -> Void, error: @escaping (Response) -> Void) -> Void {
-//        let registration = DeviceRegistration(config: "fhconfig")
-//        if let host = Config.instance["host"] {
-//            let baseURL = "\(host)/api/v2/ag-push"
-//            registration.override(pushProperties: ["serverURL" : baseURL])
-//        }
-//        registration.register(clientInfo: { (clientDevice: ClientDeviceInformation!) in
-//            clientDevice.deviceToken = deviceToken
-//            guard let config = config else {return}
-//            clientDevice.alias = config.alias
-//            clientDevice.categories = config.categories
-//        },
-//                              success: {
-//                                success(Response())
-//        },
-//                              failure: {(err: NSError) -> Void in
-//                                let response = Response()
-//                                response.error = err
-//                                error(response)
-//        })
-//    }
-
-    /**
-     Utility method that registers to AeroGear Unified Push Server and configure an alias.
-
-     - parameter alias: is a string to alias the device where to send push notifications.
-     - parameter success: closure to run upon success of the push registration.
-     - parameter error: closure to run unpon failure of push registration.
-     */
-//    open class func setPush(alias: String, success: @escaping (Response) -> Void, error: @escaping (Response) -> Void) -> Void {
-//        let conf = PushConfig()
-//        conf.alias = alias
-//        pushRegister(deviceToken: nil, config: conf, success: success, error: error)
-//    }
-//
-//    /**
-//     Utility method that registers to AeroGear Unified Push Server and configure an array list of categories.
-//
-//     - parameter categories: NSArray
-//     - parameter success: (Response) -> ()
-//     - parameter error: (Response) -> ()
-//     */
-//    open class func setPush(categories: NSArray, success: @escaping (Response) -> Void, error: @escaping (Response) -> Void) -> Void {
-//        let conf = PushConfig()
-//        conf.categories = categories as? [String]
-//        pushRegister(deviceToken: nil, config: conf, success: success, error: error)
-//    }
-//
-//    /**
-//     Send metrics to the AeroGear Push server when the app is launched due to a push notification.
-//
-//     - parameter launchOptions: contains the message id used to collect metrics.
-//     */
-//    open class func sendMetricsWhenAppLaunched(launchOptions: [AnyHashable: Any]?) {
-//        PushAnalytics.sendMetricsWhenAppLaunched(launchOptions: launchOptions)
-//    }
-//    /**
-//     Send metrics to the AeroGear Push server when the app is brought from background to
-//     foreground due to a push notification.
-//
-//     - parameter applicationState: to make sure the app was in background.
-//     - parameter userInfo: contains the message id used to collect metrics.
-//     */
-//    open class func sendMetricsWhenAppAwoken(applicationState: UIApplicationState, userInfo: [AnyHashable: Any]) {
-//        PushAnalytics.sendMetricsWhenAppAwoken(applicationState: applicationState, userInfo: userInfo)
-//    }
 
     /**
      Create a new instance of AuthRequest.

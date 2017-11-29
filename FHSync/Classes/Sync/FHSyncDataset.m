@@ -546,9 +546,9 @@ static NSString *const kUIDMapping = @"uidMapping";
     }
     
     if (resData[@"hash"] && ![resData[@"hash"] isEqualToString:self.hashValue]) {
-        NSString *remoteHash = resData[@"hash"];
-        DLog(@"Local dataset stale - syncing records :: local hash= %@ - remoteHash = %@",
-             self.hashValue, remoteHash);
+//        NSString *remoteHash = resData[@"hash"];
+//        DLog(@"Local dataset stale - syncing records :: local hash= %@ - remoteHash = %@",
+//             self.hashValue, remoteHash);
         // Different hash value returned - Sync individual records
         [self syncRecords];
     } else {
@@ -903,9 +903,9 @@ static NSString *const kUIDMapping = @"uidMapping";
     NSMutableDictionary *crashedRecords = [NSMutableDictionary dictionary];
     [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-        NSString *pendingHash = (NSString *)key;
+//        NSString *pendingHash = (NSString *)key;
         if (pendingRecord.inFlight) {
-            DLog(@"Marking in flight pending record as crashed : %@", pendingHash);
+//            DLog(@"Marking in flight pending record as crashed : %@", pendingHash);
             pendingRecord.crashed = YES;
             crashedRecords[pendingRecord.uid] = pendingRecord;
         }

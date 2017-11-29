@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'FHSync'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of FHSync.'
+  s.summary          = 'iOS client for fh-sync offline synchronization library.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,15 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+iOS implementation of the Feedhenry Data Synchronisation Client for browsers.
+To be used in conjunction with the FeedHenry Data Synchronisation Server.
                        DESC
 
-  s.homepage         = 'https://github.com/jhellar@redhat.com/FHSync'
+  s.homepage         = 'https://github.com/jhellar/fh-sync-ios'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'jhellar@redhat.com' => 'jhellar@redhat.com' }
-  s.source           = { :git => 'https://github.com/jhellar@redhat.com/FHSync.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/jhellar/fh-sync-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
