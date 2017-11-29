@@ -1,0 +1,6 @@
+framework module FHSync {
+  umbrella header "FHSync-umbrella.h"
+
+  export *
+  module * { export * }
+}

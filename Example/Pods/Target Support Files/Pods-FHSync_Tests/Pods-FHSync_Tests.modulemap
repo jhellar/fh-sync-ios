@@ -1,0 +1,6 @@
+framework module Pods_FHSync_Tests {
+  umbrella header "Pods-FHSync_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "FHSync",
+  "version": "0.1.0",
+  "summary": "A short description of FHSync.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/jhellar@redhat.com/FHSync",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "jhellar@redhat.com": "jhellar@redhat.com"
+  },
+  "source": {
+    "git": "https://github.com/jhellar@redhat.com/FHSync.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "FHSync/Classes/**/*",
+  "dependencies": {
+    "AeroGearHttp": [
+      "2.0.0"
+    ],
+    "ReachabilitySwift": [
+      "4.1.0"
+    ]
+  }
+}

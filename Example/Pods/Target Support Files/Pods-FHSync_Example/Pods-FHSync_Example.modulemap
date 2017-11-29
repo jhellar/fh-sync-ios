@@ -1,0 +1,6 @@
+framework module Pods_FHSync_Example {
+  umbrella header "Pods-FHSync_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
