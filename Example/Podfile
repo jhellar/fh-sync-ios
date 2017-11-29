@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FHSync_Example' do
+  pod 'FHSync', :path => '../'
+
+  target 'FHSync_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
