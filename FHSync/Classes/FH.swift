@@ -15,9 +15,6 @@
  * limitations under the License.
  */
 
-
-let FH_SDK_VERSION = "6.0.0"
-
 import Foundation
 import AeroGearHttp
 import Reachability
@@ -85,25 +82,6 @@ open class FH: NSObject {
      You need to make sure it is successful before calling any other API methods. The
      best way to do is by catching the error that is thrown in case of failure to initialize.
 
-     ```swift
-     FH.init { (resp:Response, error: NSError?) -> Void in
-       if let error = error {
-         self.statusLabel.text = "FH init in error"
-         print("Error: \(error)")
-         return
-       }
-       self.statusLabel.text = "FH init successful"
-       FH.cloud("hello", completionHandler: { (response: Response, error: NSError?) -> Void in
-         if let error = error {
-           print("Error: \(error)")
-           return
-         }
-         print("Response from Cloud Call: \(response.parsedResponse)")
-       })
-       print("Response: \(resp.parsedResponse)")
-     }
-     ```
-
      - parameter completionHandler: InnerCompletionBlock is a closure wrap-up that throws errors in case of init failure. If no error, the inner closure returns a JSON Object containing all the details from the init call.
      - throws NSError: Networking issue details.
      - returns: Void
@@ -129,34 +107,6 @@ open class FH: NSObject {
         args?.setValue(["cuid": self.config?.params["cuid"]], forKey: "__fh")
         let cloudRequest = CloudRequest(props: self.props, config: self.config, path: path, method: httpMethod, args: args as? [String : AnyObject], headers: headers as? [String : String])
         cloudRequest.exec(completionHandler: completionHandler)
-    }
-
-    /**
-     Create a new instance of CloudRequest class and execute it immediately
-     with the completionHandler closure. The request runs asynchronously.
-
-     - parameter path: The path of the cloud API
-     - parameter method: The HTTP request method to use for the request. Defaulted to .POST.
-     - parameter args: The request body data. Can be nil. Defaulted to nil.
-     - parameter headers: The HTTP headers to use for the request. Can be nil. Defaulted to nil.
-     - parameter completionHandler: Closure to be executed as a callback of http asynchronous call.
-     */
-    open class func cloud(path: String, method: HTTPMethod = .POST, args: [String: AnyObject]? = nil, headers: [String: String]? = nil, completionHandler: @escaping CompletionBlock) -> Void {
-        let cloudRequest = CloudRequest(props: self.props, config: self.config, path: path, method: method, args: args, headers: headers)
-        cloudRequest.exec(completionHandler: completionHandler)
-    }
-
-    /**
-     Create a new instance of CloudRequest.
-
-     - parameter path: The path of the cloud API
-     - parameter method: The HTTP request method to use for the request. Defaulted to .POST.
-     - parameter args: The request body data. Can be nil. Defaulted to nil.
-     - parameter headers: The HTTP headers to use for the request. Can be nil. Defaulted to nil.
-     */
-    open class func cloudRequest(path: String, method: HTTPMethod = .POST, args:[String: AnyObject]? = nil, headers: [String: String]? = nil) -> CloudRequest {
-        assert(props != nil, "FH init must be done prior th a Cloud call")
-        return CloudRequest(props: self.props, config: self.config, path: path, method: method, args: args, headers: headers)
     }
 
     /**
@@ -201,43 +151,5 @@ open class FH: NSObject {
             }
         }
     }
-
-    /**
-     Create a new instance of AuthRequest.
-
-     - parameter policyId: The type of policy used in RHMAP platform. The string could be `FEEDHENRY`, `OAUTH2`, `MBAAS`.
-     */
-    class open func authRequest(_ policyId: String) -> AuthRequest {
-        return AuthRequest(props: self.props!, config: Config(), method: .POST, policyId: policyId, headers: nil)
-    }
-
-    /**
-     Call the auth remote service.
-
-     - parameter policyId: The type of policy used in RHMAP platform. The string could be `FEEDHENRY`, `OAUTH2`, `MBAAS`.
-     - parameter method: the type of http call: post, get...
-     - parameter args: Http arguments. Default to nil.
-     - parameter headers: Http headers. Default to nil.
-     - parameter completionHandler: closure to run when the http call is completed. Error parameter should be tested to check for error.
-     */
-    class open func auth(policyId: String, method: HTTPMethod = .POST, args: [String: AnyObject]? = nil, headers: [String:String]? = nil, completionHandler: @escaping CompletionBlock) -> Void {
-        let authRequest = AuthRequest(props: self.props!, config: Config(), method: .POST, policyId: policyId)
-        authRequest.exec(completionHandler: completionHandler)
-    }
-
-    /**
-     Call the auth remote service.
-
-     - parameter policyId: The type of policy used in RHMAP platform. The string could be `FEEDHENRY`, `OAUTH2`, `MBAAS`.
-     - parameter user: the username used for authentication.
-     - parameter password: the password used for authentication.
-     - parameter method: the type of http call: post, get...
-     - parameter args: Http arguments. Default to nil.
-     - parameter headers: Http headers. Default to nil.
-     - parameter completionHandler: closure to run when the http call is completed. Error parameter should be tested to check for error.
-     */
-    class open func auth(policyId: String, userName: String, password: String, method: HTTPMethod = .POST, args: [String: AnyObject]? = nil, headers: [String:String]? = nil, completionHandler: @escaping CompletionBlock) -> Void {
-        let authRequest = AuthRequest(props: self.props!, config: Config(), method: .POST, policyId: policyId, userName: userName, password: password)
-        authRequest.exec(completionHandler: completionHandler)
-    }
+    
 }
