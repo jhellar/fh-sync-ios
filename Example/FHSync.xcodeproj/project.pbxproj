@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		46F810FD5779E276C2F2E09C /* Pods_FHSync_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDDF13C74CDAE3247D80CDF /* Pods_FHSync_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		75C657581DBAC27606392C32 /* Pods_FHSync_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B707473C4FD81824BFB72F5 /* Pods_FHSync_Example.framework */; };
+		88EC7B731FCED80100763FF9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC7B6C1FCED80100763FF9 /* DataManager.swift */; };
+		88EC7B741FCED80100763FF9 /* ShoppingItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88EC7B6D1FCED80100763FF9 /* ShoppingItem.xcdatamodeld */; };
+		88EC7B751FCED80100763FF9 /* ShoppingItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC7B6F1FCED80100763FF9 /* ShoppingItem+CoreDataProperties.swift */; };
+		88EC7B761FCED80100763FF9 /* DetailledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC7B701FCED80100763FF9 /* DetailledViewController.swift */; };
+		88EC7B771FCED80100763FF9 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC7B711FCED80100763FF9 /* ShoppingItem.swift */; };
+		88EC7B781FCED80100763FF9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EC7B721FCED80100763FF9 /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,22 +36,27 @@
 		0DE4F8E9528D9BC500BB37F9 /* Pods-FHSync_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHSync_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FHSync_Example/Pods-FHSync_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		16036971E7F3936FD399237B /* Pods-FHSync_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHSync_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FHSync_Tests/Pods-FHSync_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2DDDF13C74CDAE3247D80CDF /* Pods_FHSync_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FHSync_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		362ADC3C5217F140203FD064 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		362ADC3C5217F140203FD064 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3A53E6CB63063A8B0289D80F /* Pods-FHSync_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHSync_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FHSync_Example/Pods-FHSync_Example.release.xcconfig"; sourceTree = "<group>"; };
 		3B707473C4FD81824BFB72F5 /* Pods_FHSync_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FHSync_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECA1964CCDCCEAE6B8E0BFE /* Pods-FHSync_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHSync_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FHSync_Tests/Pods-FHSync_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* FHSync_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHSync_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* FHSync_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FHSync_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		721B34000386FD9EA3F7267F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		86E2CC52B66AF490476F9C44 /* FHSync.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = FHSync.podspec; path = ../FHSync.podspec; sourceTree = "<group>"; };
+		721B34000386FD9EA3F7267F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		86E2CC52B66AF490476F9C44 /* FHSync.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FHSync.podspec; path = ../FHSync.podspec; sourceTree = "<group>"; };
+		88EC7B6C1FCED80100763FF9 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		88EC7B6E1FCED80100763FF9 /* ShoppingItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingItem.xcdatamodel; sourceTree = "<group>"; };
+		88EC7B6F1FCED80100763FF9 /* ShoppingItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShoppingItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88EC7B701FCED80100763FF9 /* DetailledViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailledViewController.swift; sourceTree = "<group>"; };
+		88EC7B711FCED80100763FF9 /* ShoppingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		88EC7B721FCED80100763FF9 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +103,13 @@
 		607FACD21AFB9204008FA782 /* Example for FHSync */ = {
 			isa = PBXGroup;
 			children = (
+				88EC7B6C1FCED80100763FF9 /* DataManager.swift */,
+				88EC7B701FCED80100763FF9 /* DetailledViewController.swift */,
+				88EC7B721FCED80100763FF9 /* RootViewController.swift */,
+				88EC7B711FCED80100763FF9 /* ShoppingItem.swift */,
+				88EC7B6D1FCED80100763FF9 /* ShoppingItem.xcdatamodeld */,
+				88EC7B6F1FCED80100763FF9 /* ShoppingItem+CoreDataProperties.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -374,8 +389,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				88EC7B751FCED80100763FF9 /* ShoppingItem+CoreDataProperties.swift in Sources */,
+				88EC7B741FCED80100763FF9 /* ShoppingItem.xcdatamodeld in Sources */,
+				88EC7B731FCED80100763FF9 /* DataManager.swift in Sources */,
+				88EC7B771FCED80100763FF9 /* ShoppingItem.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				88EC7B781FCED80100763FF9 /* RootViewController.swift in Sources */,
+				88EC7B761FCED80100763FF9 /* DetailledViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +635,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88EC7B6D1FCED80100763FF9 /* ShoppingItem.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88EC7B6E1FCED80100763FF9 /* ShoppingItem.xcdatamodel */,
+			);
+			currentVersion = 88EC7B6E1FCED80100763FF9 /* ShoppingItem.xcdatamodel */;
+			path = ShoppingItem.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }
